@@ -1,0 +1,70 @@
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~ (master)
+$ cd "C:\Users\hp\Desktop\pythoncodes"
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (master)
+$ git init
+Initialized empty Git repository in C:/Users/hp/Desktop/pythoncodes/.git/
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (master)
+$ git remote add origin https://github.com/Novaweb123/pythoncodes.git
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (master)
+$ git remote set-url origin https://github.com/Novaweb123/pythoncodes.git
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (master)
+$ git add .
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (master)
+$ git commit -m "Initial commit"
+[master (root-commit) 7637a32] Initial commit
+ 7 files changed, 712 insertions(+)
+ create mode 100644 amazon_uk_inventoryupload.py
+ create mode 100644 amazonusa_inventoryupload.py
+ create mode 100644 fba_ordersimport.py
+ create mode 100644 purchasebills_import.py
+ create mode 100644 pushmycart_raw_data_to_database.py
+ create mode 100644 shippedorders_import.py
+ create mode 100644 walmart_inventoryupload.py
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (master)
+$ git branch -M main
+git push -u origin main
+To https://github.com/Novaweb123/pythoncodes.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Novaweb123/pythoncodes.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (main)
+$ git pull --rebase origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 2.24 KiB | 120.00 KiB/s, done.
+From https://github.com/Novaweb123/pythoncodes
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+Successfully rebased and updated refs/heads/main.
+
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (main)
+$ git push -u origin main
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 6.77 KiB | 6.77 MiB/s, done.
+Total 9 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/Novaweb123/pythoncodes.git
+   38d1e1e..807de3b  main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+
+hp@DESKTOP-I7BQ9HI MINGW64 ~/Desktop/pythoncodes (main)
