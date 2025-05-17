@@ -1,0 +1,56 @@
+import pandas as pd
+import mysql.connector
+
+# Establish a connection to the MySQL database
+mydb = mysql.connector.connect(
+    host="183.82.62.219",
+    user="dbuser",
+    password="A@123456",
+    database="stockandmanagement"
+)
+
+# Create a cursor object to execute SQL queries
+cursor = mydb.cursor()
+
+# Read the CSV file into a pandas DataFrame with the correct encoding
+df = pd.read_csv("C:/Users/hp/Desktop/Code files/Walmart Upload.csv", encoding='ISO-8859-1')
+
+# Create counters for inserted rows and errors
+inserted_count = 0
+error_count = 0
+
+# Create a list to keep track of rows with errors
+error_rows = []
+
+# Loop through each row of the DataFrame and insert non-duplicate items into the MySQL database
+for index, row in df.iterrows():
+    try:
+        cursor.execute("""
+            INSERT INTO tbl_walmart_item_master (sku, msku, item_name, brandid, pack_size, cost_at_us, physicalweight, updatedby)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        """, (row['sku'], row['msku'], row['item_name'], row['brandid'], row['pack_size'], row['cost_at_us'], row['physicalweight'], row['updatedby']))
+        mydb.commit()
+        inserted_count += 1  # Increment the inserted count
+    except mysql.connector.IntegrityError:
+        # If a duplicate entry is found, add the row to the error_rows list with "Duplicate" message
+        row['Error_Message'] = "Duplicate"
+        error_rows.append(row)
+        error_count += 1  # Increment the error count
+    except mysql.connector.DataError as e:
+        # If a DataError occurs, add the row to the error_rows list with the error message
+        row['Error_Message'] = str(e)
+        error_rows.append(row)
+        error_count += 1  # Increment the error count
+
+# Close the database connection
+mydb.close()
+
+# Create a new DataFrame with error rows
+df_errors = pd.DataFrame(error_rows)
+
+# Write the error rows to a new CSV file
+df_errors.to_csv("C:/Users/hp/Desktop/Code files/Errors/WalmartErrors.csv", index=False)
+
+# Print the number of inserted rows and error rows
+print(f"Inserted rows: {inserted_count}")
+print(f"Rows with errors: {error_count}")
