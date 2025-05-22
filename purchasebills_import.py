@@ -27,17 +27,19 @@ for index, row in df.iterrows():
     try:
         cursor.execute("""
             INSERT INTO tbl_purchase_invoices 
-            (bill_date, vendor_name, GST_identification_number, bill_number, branch, sku, item_name, quantity, rate, invoice_total, item_total, account, source_of_supply, destination_of_supply, tax_name, cgst, sgst, igst, item_type)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            (billdate, vendor, gstnumber, billnumber, branchid, sku, 
+            item_name, quantity, purchasecost, invoicetotal, totalcost, account, 
+            source_of_supply, destination_of_supply, tax_name, cgst, sgst, igst, item_type, createdby, brandid)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """, (
-            row['bill_date'], row['vendor_name'], row['GST_identification_number'], row['bill_number'], row['branch'], 
-            row['sku'], row['item_name'], row['quantity'], row['rate'], row['invoice_total'], row['item_total'], 
+            row['billdate'], row['vendor'], row['gstnumber'], row['billnumber'], row['branchid'], 
+            row['sku'], row['item_name'], row['quantity'], row['purchasecost'], row['invoicetotal'], row['totalcost'], 
             row['account'], row['source_of_supply'], row['destination_of_supply'], row['tax_name'], row['cgst'], 
-            row['sgst'], row['igst'], row['item_type']
+            row['sgst'], row['igst'], row['item_type'], row['createdby'], row['brandid']
         ))
         
         # Call the stored procedure to update inventory
-        cursor.callproc("sp_updateonpurcahse", (row['bill_number'], row['sku'], row['rate']))
+        cursor.callproc("sp_updateonpurcahse", (row['billnumber'], row['sku'], row['purchasecost']))
         
         # Commit the transaction
         mydb.commit()
