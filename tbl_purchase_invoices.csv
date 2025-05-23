@@ -1,0 +1,2 @@
+billdate,vendor,gstnumber,billnumber,branchid,sku,item_name,brandid,quantity,purchasecost,invoicetotal,totalcost,account,source_of_supply,destination_of_supply,tax_name,cgst,sgst,igst,item_type,createdby
+4/15/2024,M/S Balu Herbals,36AAGCB2685R1ZY,BHE-1-04-24-00594--,1,1016967,Balu Herbals Musambram 25 g,24,1,60,60,60,Trading Inventory (FG Stock),TS,TS,GST0,0,0,0,goods,Fathima Irfana
