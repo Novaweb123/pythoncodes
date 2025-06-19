@@ -173,7 +173,7 @@ def update_orders_in_mysql(orders_data, cursor, connection):
 # Main logic
 if __name__ == "__main__":
     # Fetch orders from ShipStation and Veeqo
-    shipstation_orders = fetch_shipstation_orders('33b06747ac8b4939b8f879c59a914c1b', '5bb743e4ab4d4c92b955beb1a1cf0b82')
+    shipstation_orders = fetch_shipstation_orders('f6ddc41804a2466f93418aa777624837', 'e10a81745b844d3084a51580102f6e20')
     veeqo_orders = fetch_veeqo_orders(['Vqt/1d2cb2113d124f7dae997eead2a1b229', 'Vqt/0a6bbd57d30e7631d59dbf27912b8495'])
 
     # Combine ShipStation and Veeqo orders data
