@@ -33,7 +33,7 @@ def fetch_shipstation_orders(api_key, api_secret):
                             'orderId': order.get('orderId'),
                             'orderNumber': order.get('orderNumber')[:50],
                             'lineItemKey': item.get('lineItemKey'),
-                            'orderDate': order.get('createDate'),
+                            'orderDate': order.get('orderDate'),
                             'orderStatus': order.get('orderStatus'),
                             'Quantity': item.get('quantity'),
                             'Unit_price': item.get('unitPrice'),
