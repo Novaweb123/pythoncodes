@@ -13,8 +13,8 @@ DB_CONFIG = {
 
 # ShipStation API configuration
 SHIPSTATION_CONFIG = {
-    'api_key': '33b06747ac8b4939b8f879c59a914c1b',
-    'api_secret': '5bb743e4ab4d4c92b955beb1a1cf0b82'
+    'api_key': 'f6ddc41804a2466f93418aa777624837',
+    'api_secret': 'e10a81745b844d3084a51580102f6e20'
 }
 
 mydb = mysql.connector.connect(**DB_CONFIG)
