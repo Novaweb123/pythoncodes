@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
 cursor = mydb.cursor()
 
 # Read the CSV file into a pandas DataFrame with the correct encoding
-df = pd.read_csv("C:/Users/hp/Desktop/Code files/tbl_purchase_invoices.csv", encoding='ISO-8859-1', low_memory=False)
+df = pd.read_csv("C:/Users/pc/OneDrive/Desktop/Code files/tbl_purchase_invoices.csv", encoding='ISO-8859-1', low_memory=False)
 
 # Create a list to keep track of the rows with errors
 error_rows = []
@@ -55,7 +55,7 @@ cursor.close()
 mydb.close()
 
 # Create a new CSV file with the rows that had errors
-output_file = "C:/Users/hp/Desktop/Code files/Errors/purchase_bill_error.csv"
+output_file = "C:/Users/pc/OneDrive/Desktop/Code files/Errors/purchase_bill_error.csv"
 with open(output_file, 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(df.columns.tolist() + ["Error Reason"])  # Write the header with the additional column
