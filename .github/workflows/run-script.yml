@@ -1,0 +1,24 @@
+name: Run Shipstation and Veeqo Orders Script
+
+on:
+  schedule:
+    - cron: '*/12 * * * *'  # Every 12 minutes (UTC)
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install mysql-connector-python
+
+      - name: Run Python script
+        run: python "Shipstation and veeqo unshipped_orders.py"
