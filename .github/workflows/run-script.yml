@@ -21,4 +21,4 @@ jobs:
         run: pip install mysql-connector-python
 
       - name: Run Python script
-        run: python "Shipstation and veeqo unshipped_orders.py"
+        run: python "Shipstation_and_veeqo_unshipped_orders.py"
